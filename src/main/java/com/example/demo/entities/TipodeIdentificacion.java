@@ -5,35 +5,33 @@ import javax.persistence.*;
 @Entity
 @Table(name = "TipodeIdentificacion")
 public class TipodeIdentificacion {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idNumeroIdentificacion;
-
-    @Column(name = "TipoIdentificacion", length = 50, nullable = false)
-    private String TipoIdentificacion;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idIdentificacion;
+@Column(name = "tipoIdentificacion", length = 50, nullable = false)
+    private String tipoIdentificacion;
 
     public TipodeIdentificacion() {
     }
 
-    public TipodeIdentificacion(int idNumeroIdentificacion, String tipoIdentificacion) {
-        this.idNumeroIdentificacion = idNumeroIdentificacion;
-        this.TipoIdentificacion = tipoIdentificacion;
+    public TipodeIdentificacion(int idIdentificacion, String tipoIdentificacion) {
+        this.idIdentificacion = idIdentificacion;
+        this.tipoIdentificacion = tipoIdentificacion;
     }
 
-    public int getIdNumeroIdentificacion() {
-        return idNumeroIdentificacion;
+    public int getIdIdentificacion() {
+        return idIdentificacion;
     }
 
-    public void setIdNumeroIdentificacion(int idNumeroIdentificacion) {
-        this.idNumeroIdentificacion = idNumeroIdentificacion;
+    public void setIdIdentificacion(int idIdentificacion) {
+        this.idIdentificacion = idIdentificacion;
     }
 
     public String getTipoIdentificacion() {
-        return TipoIdentificacion;
+        return tipoIdentificacion;
     }
 
     public void setTipoIdentificacion(String tipoIdentificacion) {
-        this.TipoIdentificacion = tipoIdentificacion;
+        this.tipoIdentificacion = tipoIdentificacion;
     }
 }
