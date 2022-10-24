@@ -28,4 +28,14 @@ public class TipodeIdentificacionController {
     public void modificar(@RequestBody TipodeIdentificacion tipodeIdentificacion ){
         tiService.insert(tipodeIdentificacion);
     }
+
+    @PostMapping("/buscar")
+    public List<TipodeIdentificacion> buscar(@RequestBody TipodeIdentificacion tipodeIdentificacion){
+        List<TipodeIdentificacion> lista;
+        tipodeIdentificacion.setTipoIdentificacion(tipodeIdentificacion.getTipoIdentificacion());
+        lista=tiService.search(tipodeIdentificacion.getTipoIdentificacion());
+        return lista;
+    }
+
+
 }

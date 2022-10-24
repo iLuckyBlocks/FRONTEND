@@ -14,7 +14,6 @@ public class TipodeIdentificacionImpl implements ITipodeIdentificacionService {
     @Autowired
     private ITipodeIdentificacionRepository tiR;
 
-
     @Override
     public void insert(TipodeIdentificacion tipodeIdentificacion) {
         tiR.save(tipodeIdentificacion);
@@ -33,7 +32,13 @@ public class TipodeIdentificacionImpl implements ITipodeIdentificacionService {
     }
 
     @Override
+    public List<TipodeIdentificacion> search(String tipoIdentificacion) {
+        return tiR.search(tipoIdentificacion);
+    }
+
+    /*@Override
     public Optional<TipodeIdentificacion> listarId(int idIdentificacion) {
         return Optional.of(tiR.findById(idIdentificacion).orElse(new TipodeIdentificacion()));
-    }
+    }*/
+
 }

@@ -11,5 +11,6 @@ public interface ITipodeIdentificacionService {
     public void insert(TipodeIdentificacion tipodeIdentificacion);
     List<TipodeIdentificacion>list();
     public void delete(int idIdentificacio);
-    public Optional<TipodeIdentificacion>listarId(int idIdentificacion);
+    // public Optional<TipodeIdentificacion>listarId(int idIdentificacion);
+    List<TipodeIdentificacion>search(String tipoIdentificacion);
 }
