@@ -14,6 +14,7 @@ public class TipodeIdentificacionImpl implements ITipodeIdentificacionService {
     @Autowired
     private ITipodeIdentificacionRepository tiR;
 
+
     @Override
     public void insert(TipodeIdentificacion tipodeIdentificacion) {
         tiR.save(tipodeIdentificacion);

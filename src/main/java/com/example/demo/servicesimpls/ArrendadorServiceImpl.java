@@ -29,6 +29,7 @@ public class ArrendadorServiceImpl {
         return aR.findAll(enablePagination ? PageRequest.of(page,size): Pageable.unpaged());
     }
 
+
     public void deleteArrendador (Integer idArrendador){
         aR.deleteById(idArrendador);
     }

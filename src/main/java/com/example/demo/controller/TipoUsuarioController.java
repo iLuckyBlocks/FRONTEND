@@ -11,6 +11,7 @@ import java.util.List;
 @RequestMapping("/tipoUsuario")
 public class TipoUsuarioController {
 
+
     @Autowired
     private ITipoUsuarioService tService;
 

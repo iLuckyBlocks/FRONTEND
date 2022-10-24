@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface IAnuncioService {
     public void insert(Anuncio anuncio);
+
+
     List<Anuncio>list();
 }

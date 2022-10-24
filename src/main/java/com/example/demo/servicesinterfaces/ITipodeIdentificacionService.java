@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ITipodeIdentificacionService {
+
+
     public void insert(TipodeIdentificacion tipodeIdentificacion);
     List<TipodeIdentificacion>list();
     public void delete(int idIdentificacio);

@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 public class TipoUsuarioServicelmpl implements ITipoUsuarioService {
 
+
     @Autowired
     private ITipoUserRepository tR;
     @Override

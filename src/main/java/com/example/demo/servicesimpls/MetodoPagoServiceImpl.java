@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class MetodoPagoServiceImpl implements IMetodoPagoService {
+
     @Autowired
     private IMetodoPagoRepository mR;
     @Override

@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/tiposdeidentificacion")
 public class TipodeIdentificacionController {
+
     @Autowired
     private ITipodeIdentificacionService tiService;
 

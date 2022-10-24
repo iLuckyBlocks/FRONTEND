@@ -35,6 +35,8 @@ public class ArrendadorController {
     }
 
 
+
+
     @DeleteMapping(value="/{id}")
     public void deleteArrendador (@PathVariable ("id") Integer id){
         aService.deleteArrendador(id);

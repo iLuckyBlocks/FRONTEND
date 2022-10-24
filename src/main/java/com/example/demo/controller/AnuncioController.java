@@ -42,6 +42,7 @@ public class AnuncioController {
     }
 
 
+
     @PutMapping
     public ResponseEntity<Anuncio> editAnuncio (@Validated @RequestBody Anuncio anuncio){
         return ResponseEntity.status(HttpStatus.CREATED).body(aService.editAnuncio(anuncio));

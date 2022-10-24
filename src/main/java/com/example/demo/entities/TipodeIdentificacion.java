@@ -34,4 +34,6 @@ public class TipodeIdentificacion {
     public void setTipoIdentificacion(String tipoIdentificacion) {
         this.tipoIdentificacion = tipoIdentificacion;
     }
+
+
 }

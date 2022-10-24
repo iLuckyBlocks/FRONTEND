@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface IMetodoPagoService {
 
+
+
     public void insert(MetodoPago metodopago);
     List<MetodoPago>list();
 

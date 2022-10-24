@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Table(name = "Arrendador")
 
 public class Arrendador{
+
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private int idArrendador;
