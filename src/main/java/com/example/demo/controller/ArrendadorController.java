@@ -1,16 +1,13 @@
 package com.example.demo.controller;
 
-import com.example.demo.entities.Anuncio;
 import com.example.demo.entities.Arrendador;
-import com.example.demo.servicesimpls.AnuncioServiceImpl;
-import com.example.demo.servicesimpls.ArrendadorServiceImpl;
+import com.example.demo.entities.Estudiante;
+import com.example.demo.servicesinterfaces.IArrendadorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,42 +15,48 @@ import java.util.Optional;
 public class ArrendadorController {
 
     @Autowired
-    private ArrendadorServiceImpl aService;
-
+    private IArrendadorService aService;
 
     @PostMapping
-    public ResponseEntity<Arrendador> saveArrendador (@Validated @RequestBody Arrendador arrendador){
-        return ResponseEntity.status(HttpStatus.CREATED).body(aService.saveArrendador(arrendador));
+    public void registrar(@RequestBody Arrendador arr){aService.insert(arr); }
+
+    @PutMapping
+    public void modificar(@RequestBody Arrendador arr){
+        aService.insert(arr);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id){
+        aService.delete(id);
     }
 
     @GetMapping
-    public ResponseEntity<Page<Arrendador>> getallArrendador (
-            @RequestParam(required = false, defaultValue = "0") Integer page,
-            @RequestParam(required = false, defaultValue = "10") Integer size,
-            @RequestParam(required = false, defaultValue = "false") Boolean enablePagination){
-        return ResponseEntity.ok(aService.getallArrendador(page,size,enablePagination));
+    public List<Arrendador> listar(){
+        return aService.list();
     }
 
+    @PostMapping("/buscar")
+    public List<Arrendador>buscar(@RequestBody Arrendador arr)throws ParseException {
+        List<Arrendador> listaArrendador;
+        listaArrendador = aService.buscarNombreUsuario(arr.getNombre());
 
-
-
-    @DeleteMapping(value="/{id}")
-    public void deleteArrendador (@PathVariable ("id") Integer id){
-        aService.deleteArrendador(id);
-        ResponseEntity.ok(!aService.existsByid(id));
+        if (listaArrendador.isEmpty()){
+                listaArrendador=aService.buscarPorIdentificacion(arr.getIdentificacion().getTipoidentificacion());
+        }
+        return listaArrendador;
     }
+    @GetMapping("/{id}")
+    public Optional<Arrendador>listarPorId(@PathVariable("id")Integer id){return aService.listarPorId(id);}
 
+    @GetMapping("/buscardominioContrato")
+    public List<Arrendador>buscarPorContrato(){return aService.buscardominioContrato();}
 
-    @PutMapping
-    public ResponseEntity<Arrendador> editArrendador (@Validated @RequestBody Arrendador arrendador){
-        return ResponseEntity.status(HttpStatus.CREATED).body(aService.editArrendador(arrendador));
-    }
+    @GetMapping("/buscardominioCelulares")
+    public List<Arrendador>buscarPorCelular(){return aService.buscardominioCelular();}
 
-    @GetMapping(value="/{id}")
-    public ResponseEntity<Optional<Arrendador>> findAnuncioById(@PathVariable ("id") Integer id){
-        return ResponseEntity.status(HttpStatus.CREATED).body(aService.findById(id));
-    }
+    @GetMapping("/buscardominioExtranjero")
+    public List<Arrendador>buscarPorPais(){return aService.buscardominioExtranjero();}
 
-
-
+    @GetMapping("/buscardominioTarjeta")
+    public List<Arrendador>buscarPorTarjeta(){return aService.buscardominioTarjeta();}
 }

@@ -1,13 +1,13 @@
 package com.example.demo.controller;
 
 import com.example.demo.entities.Pais;
-import com.example.demo.entities.TipoUsuario;
 import com.example.demo.servicesinterfaces.IPaisService;
-import com.example.demo.servicesinterfaces.ITipoUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/pais")
@@ -35,6 +35,18 @@ public class PaisController {
         tPais.insert(pais);
     }
 
+
+    @PostMapping("/buscar")
+    public List<Pais>buscar(@RequestBody String nombre)throws ParseException {
+        List<Pais> listaPaises;
+        listaPaises = tPais.buscarNombre(nombre);
+        return listaPaises;
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Pais> listarPorId(@PathVariable("id")Integer id){return tPais.listarPorId(id);}
+
+    /*
     @PostMapping("/buscar")
     public  List<Pais> buscar(@RequestBody Pais pais){
         List<Pais> lista;
@@ -46,6 +58,8 @@ public class PaisController {
 
         return lista;
     }
+
+     */
 
 
 }

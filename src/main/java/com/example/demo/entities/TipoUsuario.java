@@ -10,20 +10,25 @@ public class TipoUsuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTipoUser;
 
-    @Column(name = "TypeUsuario", length = 80, nullable = false)
-    private String TypeUsuario;
+    @Column(name = "tipoUsuario", length = 80, nullable = false)
+    private String tipoUsuario;
 
     public TipoUsuario() {}
 
     public TipoUsuario(int idTipoUser, String tipoUsuario) {
         this.idTipoUser = idTipoUser;
-        this.TypeUsuario = tipoUsuario;
+        this.tipoUsuario = tipoUsuario;
     }
 
     public int getIdTipoUser() {return idTipoUser;}
 
     public void setIdTipoUser(int idTipoUsuario) {this.idTipoUser = idTipoUsuario;}
-    public String getTipoUsuario() {return TypeUsuario;}
-    public void setTipoUsuario(String tipoUsuario) {this.TypeUsuario = tipoUsuario;}
 
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
 }

@@ -1,101 +1,74 @@
 package com.example.demo.entities;
 
-import javax.persistence.*;
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "Contrato")
-public class Contrato {
-
+public class Contrato implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idContrato;
 
-
-    @Column(name = "FechaC", length = 50, nullable = false)
-    private String FechaC;
-
-    @Column(name = "HoraC", length = 50, nullable = false)
-    private String HoraC;
-
     @Column(name = "DetallesContrato", length = 50, nullable = false)
-    private String DetallesContrato;
+    private String detallesContrato;
 
-    @Column(name = "MontoPrevisto", length = 50, nullable = false)
-    private Float MontoPrevisto;
+    @Column(name = "Monto", length = 50, nullable = false)
+    private int monto;
 
-    @Column(name = "RmetodoPago", length = 50, nullable = false)
-    private String RmetodoPago;
+    @ManyToOne
+    @JoinColumn(name="idArrendador", nullable = false)
+    private Arrendador arrendador;
 
-    @Column(name = "Proceso", length = 50, nullable = false)
-    private Boolean Proceso;
 
     public Contrato() {
+        super();
+        // TODO Auto-generated constructor stub
     }
 
-    public Contrato(int idContrato, String fechaC, String horaC, String detallesContrato, Float montoPrevisto, String rmetodoPago, Boolean proceso) {
+    public Contrato(int idContrato, String detallesContrato, int monto, Arrendador arrendador) {
         this.idContrato = idContrato;
-        this.FechaC = fechaC;
-        this.HoraC = horaC;
-        this.DetallesContrato = detallesContrato;
-        this.MontoPrevisto = montoPrevisto;
-        this.RmetodoPago = rmetodoPago;
-        this.Proceso = proceso;
+        this.detallesContrato = detallesContrato;
+        this.monto = monto;
+        this.arrendador=arrendador;
     }
 
+    //ID CONTRATO
     public int getIdContrato() {
         return idContrato;
     }
-
     public void setIdContrato(int idContrato) {
         this.idContrato = idContrato;
     }
 
-    public String getFechaC() {
-        return FechaC;
-    }
-
-    public void setFechaC(String fechaC) {
-        this.FechaC = fechaC;
-    }
-
-    public String getHoraC() {
-        return HoraC;
-    }
-
-    public void setHoraC(String horaC) {
-        this.HoraC = horaC;
-    }
-
+    //DETALLES CONTRATO
     public String getDetallesContrato() {
-        return DetallesContrato;
+        return detallesContrato;
     }
-
     public void setDetallesContrato(String detallesContrato) {
-        this.DetallesContrato = detallesContrato;
+        this.detallesContrato = detallesContrato;
     }
 
-    public Float getMontoPrevisto() {
-        return MontoPrevisto;
+    public int getMonto() {
+        return monto;
     }
 
-    public void setMontoPrevisto(Float montoPrevisto) {
-        this.MontoPrevisto = montoPrevisto;
+    public void setMonto(int monto) {
+        this.monto = monto;
     }
 
-    public String getRmetodoPago() {
-        return RmetodoPago;
-    }
 
-    public void setRmetodoPago(String rmetodoPago) {
-        this.RmetodoPago = rmetodoPago;
-    }
+    public Arrendador getArrendador() {return arrendador;}
 
-    public Boolean getProceso() {
-        return Proceso;
-    }
-
-    public void setProceso(Boolean proceso) {
-        this.Proceso = proceso;
-    }
+    public void setArrendador(Arrendador arrendador) {this.arrendador = arrendador;}
 }

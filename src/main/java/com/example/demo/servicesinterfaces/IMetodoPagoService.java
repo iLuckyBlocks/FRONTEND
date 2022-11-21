@@ -1,8 +1,8 @@
 package com.example.demo.servicesinterfaces;
 
 import com.example.demo.entities.MetodoPago;
-
 import java.util.List;
+import java.util.Optional;
 
 
 public interface IMetodoPagoService {
@@ -14,5 +14,6 @@ public interface IMetodoPagoService {
 
     public void delete(int IdMetodoPago);
 
-    List<MetodoPago> search(String nameFormaPago);
+    public Optional<MetodoPago> listarPorId(int idMetodoPago);
+    List<MetodoPago> buscarNombre(String nameFormaPago);
 }

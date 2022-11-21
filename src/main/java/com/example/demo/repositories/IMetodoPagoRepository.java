@@ -10,8 +10,6 @@ import java.util.List;
 
 @Repository
 public interface IMetodoPagoRepository extends JpaRepository<MetodoPago, Integer> {
-
-    @Query("from MetodoPago mp where mp.FormaPago like %:nameFormaPago")
-    List<MetodoPago>search(@Param("nameFormaPago") String nameFormaPago);
-
+    @Query("from MetodoPago mp where mp.formaPago like %:formaPago%")
+    List<MetodoPago>buscarNombre(@Param("formaPago") String formaPago);
 }

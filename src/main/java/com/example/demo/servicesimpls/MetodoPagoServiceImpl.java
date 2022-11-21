@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MetodoPagoServiceImpl implements IMetodoPagoService {
@@ -29,9 +30,10 @@ public class MetodoPagoServiceImpl implements IMetodoPagoService {
     }
 
     @Override
-    public List<MetodoPago> search(String nameFormaPago) {
-        return mR.search(nameFormaPago);
+    public Optional<MetodoPago> listarPorId(int idMetodoPago){return mR.findById(idMetodoPago);}
+    @Override
+    public List<MetodoPago> buscarNombre(String nameFormaPago) {
+        return mR.buscarNombre(nameFormaPago);
     }
-
 
 }

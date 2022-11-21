@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface ITipoUserRepository extends JpaRepository<TipoUsuario, Integer> {
-
-    @Query("from TipoUsuario p WHERE p.TypeUsuario like %:TypeUsuario")
-    List<TipoUsuario>search(@Param("TypeUsuario") String TypeUsuario);
+    //modificado
+    @Query("from TipoUsuario p WHERE p.tipoUsuario like %:tipoUsuario%")
+    List<TipoUsuario>buscarNombre(@Param("tipoUsuario") String tipoUsuario);
 }

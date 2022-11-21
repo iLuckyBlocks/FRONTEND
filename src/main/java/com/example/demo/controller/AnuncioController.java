@@ -1,15 +1,11 @@
 package com.example.demo.controller;
 
-
 import com.example.demo.entities.Anuncio;
-import com.example.demo.servicesimpls.AnuncioServiceImpl;
+import com.example.demo.servicesinterfaces.IAnuncioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,41 +14,44 @@ import java.util.Optional;
 public class AnuncioController {
 
     @Autowired
-    private AnuncioServiceImpl aService;
-
-
+    private IAnuncioService aService;
     @PostMapping
-    public ResponseEntity<Anuncio> saveAnuncio (@Validated @RequestBody Anuncio anuncio){
-        return ResponseEntity.status(HttpStatus.CREATED).body(aService.saveAnuncio(anuncio));
-    }
-
+    public void registrar(@RequestBody Anuncio anuncio){aService.insert(anuncio); }
     @GetMapping
-    public ResponseEntity<Page<Anuncio>> getallAnuncios (
-            @RequestParam(required = false, defaultValue = "0") Integer page,
-            @RequestParam(required = false, defaultValue = "10") Integer size,
-            @RequestParam(required = false, defaultValue = "false") Boolean enablePagination){
-            return ResponseEntity.ok(aService.getallAnuncios(page,size,enablePagination));
+    public List<Anuncio>listar(){
+        return aService.list();
     }
-
-
-    @DeleteMapping(value="/{id}")
-    public void deleteAnuncio (@PathVariable ("id") Integer id){
-        aService.deleteAnuncio(id);
-        ResponseEntity.ok(!aService.existsByid(id));
-    }
-
-
-
     @PutMapping
-    public ResponseEntity<Anuncio> editAnuncio (@Validated @RequestBody Anuncio anuncio){
-        return ResponseEntity.status(HttpStatus.CREATED).body(aService.editAnuncio(anuncio));
+    public void modificar(@RequestBody Anuncio anuncio){
+        aService.insert(anuncio);
     }
+    @DeleteMapping(value="/{id}")
+    public void eliminar(@PathVariable("id") Integer id){
+        aService.delete(id);
+    }
+    @PostMapping("/buscar")
+    public List<Anuncio>buscar(@RequestBody Anuncio anuncio)throws ParseException {
+        List<Anuncio> listaAnuncios;
+        listaAnuncios = aService.buscarTitulo(anuncio.getTitulo());
 
+        if (listaAnuncios.isEmpty()){
+            /*listaAnuncios=aService.buscarArrendador(anuncio.getArrendador().getNombre());
+   */
+        }
+
+        return listaAnuncios;
+
+    }
     @GetMapping(value="/{id}")
-    public ResponseEntity<Optional<Anuncio>> findAnuncioById(@PathVariable ("id") Integer id){
-        return ResponseEntity.status(HttpStatus.CREATED).body(aService.findById(id));
-    }
+    public Optional<Anuncio>listarPorId(@PathVariable("id")Integer id){return aService.listarPorId(id);}
 
+    @GetMapping("/buscardominioDescripcion")
+    public List<Anuncio>buscardominioDescripcion(){return aService.buscardominioDescripcion();}
 
+    @GetMapping("/buscardominioTitulo")
+    public List<Anuncio>buscardominioTitulo(){return aService.buscardominioTitulo();}
+
+    @GetMapping("/buscardominioPrecio")
+    public List<Anuncio>buscardominioPrecio(){return aService.buscardominioPrecio();}
 
 }

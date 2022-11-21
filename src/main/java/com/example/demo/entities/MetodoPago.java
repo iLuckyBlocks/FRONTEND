@@ -8,35 +8,33 @@ public class MetodoPago {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int IdMetodoPago;
+    private int idMetodoPago;
 
-    @Column(name = "FormaPago", length = 50, nullable = false)
-    private String FormaPago;
+    @Column(name = "formaPago", length = 50, nullable = false)
+    private String formaPago;
 
     public MetodoPago(){
 
     }
 
-    public MetodoPago(int IdMetodoPago, String FormaPago){
-        this.IdMetodoPago = IdMetodoPago;
-        this.FormaPago = FormaPago;
+    public MetodoPago(int idMetodoPago, String formaPago){
+        this.idMetodoPago = idMetodoPago;
+        this.formaPago = formaPago;
     }
-
 
 
     public String getFormaPago() {
-        return FormaPago;
+        return formaPago;
+    }
+    public void setFormaPago(String formaPg) {
+        formaPago = formaPg;
     }
 
     public int getIdMetodoPago() {
-        return IdMetodoPago;
+        return idMetodoPago;
     }
 
     public void setIdMetodoPago(int idMetodoPago) {
-        IdMetodoPago = idMetodoPago;
-    }
-
-    public void setFormaPago(String formaPago) {
-        FormaPago = formaPago;
+        this.idMetodoPago = idMetodoPago;
     }
 }

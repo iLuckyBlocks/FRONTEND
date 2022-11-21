@@ -1,99 +1,128 @@
 package com.example.demo.entities;
 
-import javax.persistence.*;
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 @Entity
 @Table(name = "Arrendador")
+public class Arrendador implements Serializable{
 
-public class Arrendador{
+    private static final long serialVersionUID=1L;
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idArrendador;
 
     @Column(name = "nombre", length = 50, nullable = false)
     private String nombre;
 
-    @Column(name = "celular", nullable = false)
-    private int celular;
+    @Column(name = "celular", length = 50, nullable = false)
+    private String celular;
 
     @Column(name = "correo_electronico", length = 50, nullable = false)
     private String correo_electronico;
 
-    @Column(name = "username", length = 50, nullable = false)
-    private String username;
-
-    @Column(name = "password", nullable = false)
-    private int password;
+    @Column(name = "password", length = 50,nullable = false)
+    private String password;
 
     @Column(name = "direccion", length = 50, nullable = false)
     private String direccion;
 
+    @Column(name="propiedad", length = 80,nullable = false)
+    private String propiedad;
+
+    @ManyToOne
+    @JoinColumn(name = "idPais", nullable = false)
+    private Pais pais;
+
+    @ManyToOne
+    @JoinColumn(name = "idIdentificacion", nullable = false)
+    private Identificacion identificacion;
+
+    @ManyToOne
+    @JoinColumn(name = "idMetodoPago" , nullable = false)
+    private MetodoPago metodoPago;
+
+    @ManyToOne
+    @JoinColumn(name = "idTipoUser", nullable = false)
+    private TipoUsuario tipo;
+
     public Arrendador(){
+        super();
+        // TODO Auto-generated constructor stub
     }
 
-    public Arrendador(int idArrendador, String nombre, int celular, String correo_electronico, String username, int password, String direccion){
+    public Arrendador(int idArrendador, String nombre, String celular, String correo_electronico, String password,
+                      String direccion, String propiedad, Pais pais, Identificacion tipodeidentificacion, MetodoPago metodoPago, TipoUsuario tipo) {
         this.idArrendador = idArrendador;
         this.nombre = nombre;
-        this.correo_electronico = correo_electronico;
         this.celular = celular;
-        this.username = username;
+        this.correo_electronico = correo_electronico;
         this.password = password;
         this.direccion = direccion;
+        this.propiedad = propiedad;
+        this.pais= pais;
+        this.identificacion= tipodeidentificacion;
+        this.metodoPago=metodoPago;
+        this.tipo= tipo;
     }
 
-    public int getIdArrendador() {
-        return idArrendador;
+    //ID
+    public int getIdArrendador() {return idArrendador;}
+    public void setIdArrendador(int idArrendador) {this.idArrendador = idArrendador;}
+
+    //OBTENER NOMBRE
+    public String getNombre() {return nombre;}
+    public void setNombre(String nombre) {this.nombre = nombre;}
+
+    //CELULAR
+    public String getCelular() {return celular;}
+    public void setCelular(String celular) {this.celular = celular;}
+
+    //CORREO
+    public String getCorreo_electronico() {return correo_electronico;}
+    public void setCorreo_electronico(String correo_electronico) {this.correo_electronico = correo_electronico;}
+
+    //CONTRASEÑA
+    public String getPassword() {return password;}
+    public void setPassword(String password) {this.password = password;}
+
+    //DIRECCION
+    public String getDireccion() {return direccion;}
+    public void setDireccion(String direccion) {this.direccion = direccion;}
+
+    //PROPIEDAD
+    public String getPropiedad() {return propiedad;}
+    public void setPropiedad(String propiedad) {
+        this.propiedad = propiedad;
     }
 
-    public void setIdArrendador(int idArrendador) {
-        this.idArrendador = idArrendador;
+
+    public Identificacion getIdentificacion() {return identificacion;}
+
+    public void setIdentificacion(Identificacion identificacion) {this.identificacion = identificacion;}
+
+    public Pais getPais() {return pais;}
+    public void setPais(Pais pais) {this.pais = pais;}
+
+
+    public MetodoPago getMetodoPago() {return metodoPago;}
+    public void setMetodoPago(MetodoPago metodoPago) {this.metodoPago = metodoPago;}
+
+
+    public TipoUsuario getTipo() {
+        return tipo;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getCelular() {
-        return celular;
-    }
-
-    public void setCelular(int celular) {
-        this.celular = celular;
-    }
-
-    public String getCorreo_electronico() {
-        return correo_electronico;
-    }
-
-    public void setCorreo_electronico(String correo_electronico) {
-        this.correo_electronico = correo_electronico;
-    }
-
-    public int getPassword() {
-        return password;
-    }
-
-    public void setPassword(int password) {
-        this.password = password;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setTipo(TipoUsuario tipo) {
+        this.tipo = tipo;
     }
 }

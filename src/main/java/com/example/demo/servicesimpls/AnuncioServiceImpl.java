@@ -1,50 +1,58 @@
 package com.example.demo.servicesimpls;
 
-
 import com.example.demo.entities.Anuncio;
 import com.example.demo.repositories.IAnuncioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
+import com.example.demo.servicesinterfaces.IAnuncioService;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 import java.util.Optional;
 
-@Service
-public class AnuncioServiceImpl {
+@RestController
+public class AnuncioServiceImpl implements IAnuncioService {
     @Autowired
     private IAnuncioRepository aR;
 
-    public Anuncio saveAnuncio (Anuncio anuncio){
-        if(String.valueOf(anuncio.getIdAnuncio()).isEmpty()){
-            return aR.save(anuncio);
+    @Override
+    @Transactional
+    public boolean insert(Anuncio anun) {
+        Anuncio objArr = aR.save(anun);
+        if(objArr==null){
+            return false;
+        }else {
+            return true;
         }
-        return null;
     }
 
-    public Page<Anuncio> getallAnuncios (Integer page, Integer size, Boolean enablePagination){
-        return aR.findAll(enablePagination ? PageRequest.of(page,size): Pageable.unpaged());
+    @Override
+    public List<Anuncio> list() {
+        return aR.findAll();
     }
 
-    public void deleteAnuncio (Integer idAnuncio){
-        aR.deleteById(idAnuncio);
+    @Override
+    @Transactional
+    public void delete(int idArr) {
+        aR.deleteById(idArr);
     }
 
-    public Anuncio editAnuncio (Anuncio anuncio){
-        if(!String.valueOf(anuncio.getIdAnuncio()).isEmpty() && aR.existsById(anuncio.getIdAnuncio())){
-            return aR.save(anuncio);
-        }
-        return null;
+    @Override
+    public Optional<Anuncio>listarPorId(int idArr){return aR.findById(idArr);}
 
+    @Override
+    public List<Anuncio>buscarTitulo(String Anun){return aR.buscarTitulo(Anun);}
 
-    }
+    @Override
+    public List<Anuncio>buscarDistrito(String distrito){return aR.buscarDistrito(distrito);}
 
-    public boolean existsByid(Integer id) {
-        return aR.existsById(id);
-    }
+    @Override
+    public List<Anuncio>buscardominioDescripcion(){return aR.buscardominioDescripcion();}
 
-    public Optional<Anuncio> findById(Integer id){
-        return aR.findById(id);
-    }
+    @Override
+    public List<Anuncio>buscardominioTitulo(){return aR.buscardominioTitulo();}
+
+    @Override
+    public List<Anuncio>buscardominioPrecio(){return aR.buscardominioPrecio();}
 }

@@ -1,55 +1,54 @@
 package com.example.demo.controller;
 
 import com.example.demo.entities.Comentario;
-import com.example.demo.servicesimpls.ComentarioServiceImpl;
+import com.example.demo.entities.Estudiante;
+import com.example.demo.servicesinterfaces.IComentarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.ParseException;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/comentarios")
 public class ComentarioController {
 
-
     @Autowired
-    private ComentarioServiceImpl cServiceImpl;
+    private IComentarioService cService;
 
     @PostMapping
-    public ResponseEntity<Comentario> saveComentario (@Validated @RequestBody Comentario comentario){
-        return ResponseEntity.status(HttpStatus.CREATED).body(cServiceImpl.saveComentario(comentario));
-    }
-
+    public void registrar(@RequestBody Comentario comment){cService.insert(comment); }
     @GetMapping
-    public ResponseEntity<Page<Comentario>> getallComentario (
-            @RequestParam(required = false, defaultValue = "0") Integer page,
-            @RequestParam(required = false, defaultValue = "10") Integer size,
-            @RequestParam(required = false, defaultValue = "false") Boolean enablePagination){
-        return ResponseEntity.ok(cServiceImpl.getallComentario(page,size,enablePagination));
+    public List<Comentario>listar(){
+        return cService.list();
     }
-
-
-    @DeleteMapping(value="/{id}")
-    public void deleteComentario (@PathVariable ("id") Integer id){
-        cServiceImpl.deleteComentario(id);
-        ResponseEntity.ok(!cServiceImpl.existsByid(id));
-    }
-
-
     @PutMapping
-    public ResponseEntity<Comentario> editComentario (@Validated @RequestBody Comentario comentario){
-        return ResponseEntity.status(HttpStatus.CREATED).body(cServiceImpl.editComentario(comentario));
+    public void modificar(@RequestBody Comentario comment){
+        cService.insert(comment);
+    }
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id){
+        cService.delete(id);
     }
 
-    @GetMapping(value="/{id}")
-    public ResponseEntity<Optional<Comentario>> findAnuncioById(@PathVariable ("id") Integer id){
-        return ResponseEntity.status(HttpStatus.CREATED).body(cServiceImpl.findById(id));
+    @PostMapping("/buscar")
+    public List<Comentario>buscar(@RequestBody Comentario comment)throws ParseException {
+        List<Comentario> listaComment;
+        listaComment = cService.buscarComentario(comment.getComentario());
+
+        if (listaComment.isEmpty()){
+           listaComment=cService.buscarPorArrendador(comment.getArrendador().getNombre());
+        }
+        return listaComment;
     }
 
+    @GetMapping("/{id}")
+    public Optional<Comentario>listarPorId(@PathVariable("id")Integer id){return cService.listarPorId(id);}
 
+
+    @GetMapping("/buscardominioComentario")
+    public List<Comentario>buscarPorComentario(){return cService.buscardominioComentario();}
 
 
 }
