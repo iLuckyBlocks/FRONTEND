@@ -1,0 +1,42 @@
+
+<br>
+  <mat-toolbar>
+    <span>Reportes y consultas de estudiantes</span>
+</mat-toolbar>
+
+    <br>
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+
+      <mat-button-toggle (click)="busquedaEstudiante()">Estudiantes con numero de celular nacional</mat-button-toggle>
+      <mat-button-toggle (click)="estudiantesExtranjeros()" >Reporte de estudiantes extranjeros</mat-button-toggle>
+      <mat-button-toggle (click)="MetodoPagoEstudiantes()" >Estudiantes que cancelan con tarjeta</mat-button-toggle>
+      <mat-button-toggle (click)="ReportesSegunComentario()">Revise los comentarios de los estudiantes</mat-button-toggle>
+
+    </mat-button-toggle-group>
+    <br><br>
+
+    <mat-toolbar>
+      <span>Reportes y consultas de arrendadores</span>
+  </mat-toolbar>
+  <br>
+    <mat-button-toggle-group>
+      <mat-button-toggle  (click)="busquedaArrendadores()">Arrendadores con numero de celular nacional</mat-button-toggle>
+      <mat-button-toggle (click)="arrendadoresExtranjeros()" >Reporte de los arrendadores extranjeros</mat-button-toggle>
+      <mat-button-toggle (click)="arrendadorPagoTarjeta()" >Arrendadores que cancelan con tarjeta</mat-button-toggle>
+      <mat-button-toggle  (click)="ContratosdeArrendadores()" >Reporte de contratos realizados</mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <br><br>
+
+    <mat-toolbar>
+      <span>Reportes y consultas de anuncios</span>
+  </mat-toolbar>
+
+  <br>
+    <mat-button-toggle-group>
+      <mat-button-toggle  (click)="busquedaDescripcion()">Anuncios con todos los servicios incluidos</mat-button-toggle>
+      <mat-button-toggle  (click)="buscarTitulo()">Anuncios que solo contengan departamentos</mat-button-toggle>
+      <mat-button-toggle  (click)="buscarPrecio()">Todos los anuncios que superen el precio de 1000 soles</mat-button-toggle>
+    </mat-button-toggle-group>
+  
+  

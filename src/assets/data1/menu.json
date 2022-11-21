@@ -1,0 +1,12 @@
+[
+    {
+    "nombre":"Home",
+    "redirect": "/pagina"
+    },
+
+    {
+        "nombre":"Anuncios",
+        "redirect": "/pagina/alojamientos"
+    }
+
+]

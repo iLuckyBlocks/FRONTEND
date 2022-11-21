@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Identificacion</h1>
+    
+    <mat-form-field class="example-full-width">
+        <mat-label>Id</mat-label>
+        <input matInput  placeholder="idIdentificacion" [(ngModel)]="identificacion.idIdentificacion">
+    </mat-form-field>
+    
+    <br>
+    
+    <mat-form-field class="example-full-width">
+        <mat-label>Tipo Identificacion</mat-label>
+        <input matInput required placeholder="tipoidentificacion" [(ngModel)]="identificacion.tipoidentificacion">
+    </mat-form-field>
+    <br>
+    
+    <br>
+    <button mat-raised-button color="warn" (click)="aceptar()">Aceptar</button>
+    <button mat-raised-button color="accent" routerLink="/administrador/identificacion">Cancelar</button>
+    <p>{{mensaje}}</p>
+</div>
+    

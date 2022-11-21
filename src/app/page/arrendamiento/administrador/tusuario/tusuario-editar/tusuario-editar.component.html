@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Tipos de Usuario</h1>
+    
+    <mat-form-field class="example-full-width">
+        <mat-label>Id</mat-label>
+        <input matInput  placeholder="idTipoUser" [(ngModel)]="tipo.idTipoUser">
+    </mat-form-field>
+    
+    <br>
+    
+    <mat-form-field class="example-full-width">
+        <mat-label>Tipo de Usuario</mat-label>
+        <input matInput required placeholder="TypeUsuario" [(ngModel)]="tipo.tipoUsuario">
+    </mat-form-field>
+    <br>
+    
+    <br>
+    <button mat-raised-button color="warn" (click)="aceptar()">Aceptar</button>
+    <button mat-raised-button color="accent" routerLink="/administrador/usuario">Cancelar</button>
+    <p>{{mensaje}}</p>
+</div>
+    

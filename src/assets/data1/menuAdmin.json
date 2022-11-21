@@ -1,0 +1,35 @@
+[
+    {
+    "nombre":"Estudiantes",
+    "redirect": "/administrador/lista-estudiantes"
+    },
+
+    {
+        "nombre":"Arrendadores",
+        "redirect": "/administrador/lista-arrendadores"
+    },
+    {
+        "nombre":"Identificacion",
+        "redirect":"/administrador/identificacion"
+    },
+
+    {
+        "nombre":"Pais",
+        "redirect":"/administrador/pais"
+    },
+    {
+        "nombre":"Metodo Pago",
+        "redirect":"/administrador/metodo"
+    },
+
+    {
+        "nombre":"Tipos de Usuario",
+        "redirect":"/administrador/usuario"
+    },
+
+    {
+        "nombre":"Reportes",
+        "redirect": "/administrador/reportes"
+    }
+
+]

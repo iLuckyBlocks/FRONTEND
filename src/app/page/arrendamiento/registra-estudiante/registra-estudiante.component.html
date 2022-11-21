@@ -1,0 +1,71 @@
+<div class="conteiner">
+       <h1> ESTUDIANTE</h1>
+
+                <mat-form-field class="ancho">
+                        <mat-label>ID</mat-label>
+                        <input matInput placeholder="idEstudiante" [(ngModel)]="estudiante.idEstudiante">
+                </mat-form-field>
+
+                <mat-form-field  class="ancho" style="margin: 20px;">
+                        <mat-label>Nombres</mat-label>
+                        <input matInput placeholder="nombres" [(ngModel)]="estudiante.nombre">
+                </mat-form-field>
+
+                <mat-form-field  class="ancho">
+                        <mat-label>Celular</mat-label>
+                        <input matInput placeholder="celular" [(ngModel)]="estudiante.celular">
+                </mat-form-field>
+
+                <mat-form-field  class="ancho" style="margin: 20px;">
+                        <mat-label>Correo</mat-label>
+                        <input matInput placeholder="correo" [(ngModel)]="estudiante.correo_electronico">
+                </mat-form-field>
+
+                <mat-form-field  class="ancho">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput placeholder="contraseña" type="password" [(ngModel)]="estudiante.password">
+                </mat-form-field>
+
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Seleccione Paises</mat-label>
+                    <mat-select [(value)]="idPaisSeleccionado">
+                        <mat-option *ngFor="let a of listaPaises" [value]="a.idPais">
+                            {{a.pais}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                                    
+                <mat-form-field appearance="fill" style="margin: 20px;">
+                  <mat-label>Seleccione Identificacion</mat-label>
+                  <mat-select [(value)]="idIdentificacionSeleccionada">
+                      <mat-option *ngFor="let p of listaIdentificaciones" [value]="p.idIdentificacion">
+                          {{p.tipoidentificacion}}
+                      </mat-option>
+                  </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Seleccione Metodo</mat-label>
+                <mat-select [(value)]="idMetodoSeleccionado">
+                    <mat-option *ngFor="let d of listaMetodos" [value]="d.idMetodoPago">
+                        {{d.formaPago}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" style="margin: 20px;" >
+              <mat-label>Seleccione Tipo Usuario</mat-label>
+              <mat-select [(value)]="idUsuarioSeleccionado">
+                  <mat-option *ngFor="let e of listaUsuarios" [value]="e.idTipoUser">
+                      {{e.tipoUsuario}}
+                  </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <br>
+            <button mat-raised-button style="margin-left:540px" (click)="cerrar()"> Atras </button>
+            <button type="submit" mat-raised-button style="margin-left:60px" color="primary" (click)="agregar()">Aceptar</button>    
+
+</div>

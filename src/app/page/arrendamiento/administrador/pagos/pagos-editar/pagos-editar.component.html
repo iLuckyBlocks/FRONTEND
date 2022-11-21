@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Metodos de pago existentes</h1>
+    
+    <mat-form-field class="example-full-width">
+        <mat-label>Id</mat-label>
+        <input matInput required placeholder="idMetodoPago" [(ngModel)]="metodoPago.idMetodoPago">
+    </mat-form-field>
+    
+    <br>
+    
+    <mat-form-field class="example-full-width">
+        <mat-label> Manera de Pago</mat-label>
+        <input matInput required placeholder="formaPago" [(ngModel)]="metodoPago.formaPago">
+    </mat-form-field>
+    <br>
+    
+    <br>
+    <button mat-raised-button color="warn" (click)="aceptar()">Aceptar</button>
+    <button mat-raised-button color="accent" routerLink="/administrador/metodo">Cancelar</button>
+    <p>{{mensaje}}</p>
+</div>
+    
