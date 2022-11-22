@@ -40,6 +40,7 @@ public class Anuncio {
         return idAnuncio;
     }
 
+    public void getIDporAnuncio(boolean a){}
     public void setIdAnuncio(int idAnuncio) {
         this.idAnuncio = idAnuncio;
     }
