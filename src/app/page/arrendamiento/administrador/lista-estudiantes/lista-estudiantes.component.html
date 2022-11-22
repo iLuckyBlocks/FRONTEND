@@ -1,0 +1,73 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Estudiantes</span>
+    </mat-toolbar>
+
+    <app-buscar-estudiante></app-buscar-estudiante>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+        <ng-container matColumnDef="idEstudiante">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.idEstudiante}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="celular">
+          <th mat-header-cell *matHeaderCellDef> Celular </th>
+          <td mat-cell *matCellDef="let element"> {{element.celular}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="correo_electronico">
+          <th mat-header-cell *matHeaderCellDef> Correo Elec. </th>
+          <td mat-cell *matCellDef="let element"> {{element.correo_electronico}} </td>
+        </ng-container>
+      
+
+        <ng-container matColumnDef="password">
+            <th mat-header-cell *matHeaderCellDef> Contraseña </th>
+            <td mat-cell *matCellDef="let element"> {{element.password}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="pais">
+            <th mat-header-cell *matHeaderCellDef> Paises </th>
+            <td mat-cell *matCellDef="let element"> {{element.pais.pais}} </td>
+          </ng-container>
+    
+            <ng-container matColumnDef="identificacion">
+                <th mat-header-cell *matHeaderCellDef> Identificacion </th>
+                <td mat-cell *matCellDef="let element"> {{element.identificacion.tipoidentificacion}} </td>
+           </ng-container>
+    
+           <ng-container matColumnDef="metodoPago">
+            <th mat-header-cell *matHeaderCellDef> M. Pago </th>
+            <td mat-cell *matCellDef="let element"> {{element.metodoPago.formaPago}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef> T. Usuario </th>
+            <td mat-cell *matCellDef="let element"> {{element.tipo.tipoUsuario}} </td>
+          </ng-container>
+    
+      
+      
+         <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let element; let i= index" style="text-align: right;">
+
+              <button mat-raised-button color="warn" (click)="confirmar(element.idEstudiante)">Eliminar</button>
+
+            </td>
+          </ng-container>
+          
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>

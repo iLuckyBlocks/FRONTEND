@@ -1,0 +1,50 @@
+<div class="container">
+    <h1>Alojamiento</h1>
+
+
+
+
+
+
+    <mat-form-field class="bordes" class="example-full-width">
+        <mat-label>Id</mat-label>
+        <input matInput placeholder="idAnuncio" [(ngModel)]="anuncio.idAnuncio">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Imagen</mat-label>
+        <input matInput required placeholder="imagen" [(ngModel)]="anuncio.imagen">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Titulo</mat-label>
+        <input matInput required placeholder="titulo" [(ngModel)]="anuncio.titulo">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Precio</mat-label>
+        <input matInput required placeholder="precio" [(ngModel)]="anuncio.precio">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Descripcion</mat-label>
+        <input matInput required placeholder="descripcion" [(ngModel)]="anuncio.descripcion">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Distrito</mat-label>
+        <input matInput required placeholder="distrito" [(ngModel)]="anuncio.distrito">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Direccion</mat-label>
+        <input matInput required placeholder="direccion" [(ngModel)]="anuncio.direccion">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="warn" (click)="aceptar()">Aceptar</button>
+    <button mat-raised-button color="accent" routerLink="/pagina/alojamientos">Cancelar</button>
+
+
+</div>

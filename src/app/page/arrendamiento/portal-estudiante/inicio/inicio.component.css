@@ -1,0 +1,53 @@
+
+  p {
+    text-align: left;
+  }
+  
+  label {
+    font-size: 30px;
+  }
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  label {
+    color: grey;
+  }
+  
+  .clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
+  
+  label:hover,
+  label:hover ~ label {
+    color: orange;
+  }
+  
+  input[type="radio"]:checked ~ label {
+    color: orange;
+  }
+
+  .conteiner1{
+    float: left;
+    width: 40%;
+   
+    margin-left: 9%;
+    margin-top: 50px;
+  }
+
+  .espacio{
+    margin: 1%;
+  }
+
+
+  h1 { color: #7c795d; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0; }
+
+mat-label { color: black; font-family: 'Trocchi', serif; font-size: 20px; font-weight: normal; line-height: 48px; margin:0; }
+
+input{
+    margin-top: 25px;
+}
+
+

@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>Pais</h1>
+    
+    <mat-form-field class="example-full-width">
+        <mat-label>Id</mat-label>
+        <input matInput  placeholder="idPais" [(ngModel)]="EsPais.idPais">
+    </mat-form-field>
+    
+    <br>
+    
+    <mat-form-field class="example-full-width">
+        <mat-label>Paises</mat-label>
+        <input matInput placeholder="pais" [(ngModel)]="EsPais.pais">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="example-full-width">
+        <mat-label> Regiones</mat-label>
+        <input matInput  placeholder="region" [(ngModel)]="EsPais.region">
+    </mat-form-field>
+
+    <br>
+    
+    <br>
+    <button mat-raised-button color="warn" (click)="aceptar()">Aceptar</button>
+    <button mat-raised-button color="accent" routerLink="/administrador/pais">Cancelar</button>
+    <p>{{mensaje}}</p>
+</div>
+    

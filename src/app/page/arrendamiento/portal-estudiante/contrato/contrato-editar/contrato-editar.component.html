@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Contrato</h1>
+    
+    <mat-form-field class="example-full-width">
+        <mat-label>Id</mat-label>
+        <input matInput  placeholder="idContrato" [(ngModel)]="contrato.idContrato">
+    </mat-form-field>
+    
+    <br>
+    
+    <mat-form-field class="example-full-width">
+        <mat-label>Detalles</mat-label>
+        <input matInput placeholder="detallesContrato" [(ngModel)]="contrato.detallesContrato">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Monto</mat-label>
+        <input matInput placeholder="name" [(ngModel)]="contrato.monto">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Arrendador</mat-label>
+        <mat-select [(value)]="idArrendadorSeleccionado" required>
+            <mat-option *ngFor="let p of listaArrendadores" [value]="p.idArrendador">
+                {{p.nombre}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="warn" (click)="aceptar()">Aceptar</button>
+    <button mat-raised-button color="accent" routerLink="/portal-estudiante/contrato">Cancelar</button>
+    </div>

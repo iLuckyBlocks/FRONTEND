@@ -1,0 +1,87 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Contratos por Arrendador</span>
+    </mat-toolbar>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+        <ng-container matColumnDef="idArrendador">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.idArrendador}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="celular">
+            <th mat-header-cell *matHeaderCellDef> Celular </th>
+            <td mat-cell *matCellDef="let element"> {{element.celular}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="correo_electronico">
+          <th mat-header-cell *matHeaderCellDef> Correo Elec. </th>
+          <td mat-cell *matCellDef="let element"> {{element.correo_electronico}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="password">
+          <th mat-header-cell *matHeaderCellDef> contraseña </th>
+          <td mat-cell *matCellDef="let element"> {{element.password}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="direccion">
+            <th mat-header-cell *matHeaderCellDef> direccion </th>
+            <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+          </ng-container>
+
+         <ng-container matColumnDef="propiedad">
+            <th mat-header-cell *matHeaderCellDef> propiedad </th>
+            <td mat-cell *matCellDef="let element"> {{element.propiedad}} </td>
+        </ng-container>
+
+      <ng-container matColumnDef="pais">
+        <th mat-header-cell *matHeaderCellDef> Paises </th>
+        <td mat-cell *matCellDef="let element"> {{element.pais.pais}} </td>
+      </ng-container>
+
+        <ng-container matColumnDef="identificacion">
+            <th mat-header-cell *matHeaderCellDef> Identificacion </th>
+            <td mat-cell *matCellDef="let element"> {{element.identificacion.tipoidentificacion}} </td>
+       </ng-container>
+
+       <ng-container matColumnDef="metodoPago">
+        <th mat-header-cell *matHeaderCellDef> M. Pago </th>
+        <td mat-cell *matCellDef="let element"> {{element.metodoPago.formaPago}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef> T. Usuario </th>
+        <td mat-cell *matCellDef="let element"> {{element.tipo.tipoUsuario}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="idContrato">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.idContrato}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="detallesContrato">
+        <th mat-header-cell *matHeaderCellDef> Detalles </th>
+        <td mat-cell *matCellDef="let element"> {{element.detallesContrato}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="monto">
+        <th mat-header-cell *matHeaderCellDef> Monto </th>
+        <td mat-cell *matCellDef="let element"> {{element.monto}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="arrendador">
+        <th mat-header-cell *matHeaderCellDef> Arrendador </th>
+        <td mat-cell *matCellDef="let element"> {{element.arrendador.nombre}} </td>
+    </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+</div>

@@ -1,0 +1,19 @@
+[
+    {
+    "nombre":"Home",
+    "redirect": "/portal-estudiante"
+    },
+
+    {
+        "nombre":"Novedades",
+        "redirect": "/portal-estudiante/novedades"
+    },
+    {
+        "nombre":"Mis contratos",
+        "redirect":"/portal-estudiante/contrato"
+    },
+    {
+        "nombre":"Comentarios",
+        "redirect":"/portal-estudiante/comentario"
+    }
+]
